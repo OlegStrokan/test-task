@@ -1,7 +1,8 @@
 import React from 'react';
 import s from "../App.module.css";
 import {Dropdown, Menu} from "antd";
-import {CustomMenu} from "../App";
+import CustomMenu from "./CustomMenu";
+
 
 const Nav = (props) => {
     return <div className={props.active && props.width < 1150 ? s.nav : s.navActive}>

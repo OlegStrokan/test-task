@@ -3,46 +3,16 @@ import 'antd/dist/antd.css';
 import {React, useState, useEffect} from 'react'
 import { InputNumber} from 'antd';
 import { LeftOutlined} from "@ant-design/icons";
-import {DownOutlined, RightOutlined} from "@ant-design/icons";
+import {DownOutlined} from "@ant-design/icons";
 import { Menu, Dropdown } from 'antd';
 import {useQuery} from "@apollo/client";
 import {GET_CURRENCIES} from "./query/values";
 import SideBar from "./components/SideBar";
 import _debounce from 'lodash.debounce'
+import CustomMenu from "./components/CustomMenu";
 
 let myData = require('./myData.json');
 let newData = myData.myData
-
-export const CustomMenu = (props) => {
-
-    let [activeItem, setActiveItem] = useState(null)
-    let [activeCheck, setActiveCheck] = useState(null)
-
-    return <>
-        <div className={s.menuTop} {...props}>
-            <a target="_blank" rel="noopener noreferrer" href="#">
-                <span className={s.myFinance}>Мої фінанси <RightOutlined className={s.RightOutlined}/></span>
-            </a>
-            <div className={s.menuTopFinance}><span className={s.dollar}>$</span> 854.1</div>
-        </div>
-        <hr className={s.hr}/>
-        <div key="2" className={s.menuBottom} {...props}>
-            <div className={s.menuDescription}>
-                <div>Основна валюта</div>
-                <div className={s.info}></div>
-            </div>
-            <ul>
-                {props.values.map((value,index) => {
-                    return <div className={activeItem === index ? s.aboutValueActive : undefined}
-                                onClick={() => {
-                                setActiveCheck(index)
-                                setActiveItem(index)}}
-                ><div className={s.aboutValue}><input className={s.checkbox} type="checkbox"/>
-                    <span className={s.borderValue}><span>{value.badge}</span></span> {value.code} {value.value}</div></div>})}
-            </ul>
-        </div>
-    </>
-}
 
 const App = () => {
     const [inputValue, setInputValue] = useState([])
@@ -81,7 +51,7 @@ const App = () => {
             </div>
                 <div className={s.header}>
                     <div className={s.headerLeft}>
-                        {s.nav &&
+                        {sidebarActive === true &&
                             <div className={s.burgerBtn} onClick={() => {
                                 setSidebarActive(!sidebarActive)
                             }}>
@@ -89,7 +59,7 @@ const App = () => {
                                 <span/>
                                 <span/>
                             </div>}
-                        {s.navActive &&
+                        {sidebarActive === false &&
                             <div className={s.burgerBtnBack} onClick={() =>{setSidebarActive(!sidebarActive)}}>
                             <span className={s.burgerClose}><span>Меню</span></span>
                             </div>
@@ -122,10 +92,11 @@ const App = () => {
                     <button className={s.editPriceButton}
                             onClick={() => { return inputValue < 1 ? undefined : setInputValue(inputValue - 1)
                             }}>-</button>
+                            {sidebarActive === true &&
                     <InputNumber className={s.input}
                                  size={'large'} min={1} max={10}
                                  value={inputValue}
-                                 onChange={setInputValue}/>
+                                 onChange={setInputValue}/>}{sidebarActive === false && undefined}
                     <button className={s.editPriceButton}
                             onClick={() => { return inputValue > 9 ? undefined : setInputValue(inputValue + 1)
                             }}>+</button>
@@ -251,6 +222,7 @@ const App = () => {
                                     <button className={s.priceButton}>
                                         <div className={s.buy}></div>
                                         <div>Buy</div>
+
                                     </button>
                                 </div>
                             </div>
