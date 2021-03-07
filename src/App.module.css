@@ -29,9 +29,6 @@ li{
   justify-content: space-around;
   margin: 0 -30px;
 }
-.menuBottom{
-
-}
 .menuDescription{
   display: flex;
   justify-content: flex-start;
@@ -46,9 +43,8 @@ li{
 .back{
   margin-left: 20px;
 }
-
 .dropMenu:hover {
-  background: #fff;
+  outline: 1px solid;
 }
 .myFinance {
   font-size: 14px;
@@ -62,7 +58,9 @@ li{
 .menu * {
   font-size: 1.2rem;
 }
-
+.dropMenu{
+  transition: 0.3s;
+}
 .dropMenu * {
   display: flex;
   align-items: center;
@@ -86,7 +84,7 @@ li{
   color: #fff;
   background: #212122;
   font-weight: bold;
-  width: 180px;
+  width: 185px;
   height: 100%;
   font-size: 14px;
   padding: 23px;
@@ -168,11 +166,8 @@ li{
 .listsMenu div:nth-child(5),
 .listsMenu div:nth-child(6){
   display: flex;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
-}
-.listsMenu div{
-
 }
 .listsMenu{
   width: 87%;
@@ -196,6 +191,7 @@ li{
   background-image: url("dist/images/list-3.png");
   width: 16px;
   height: 16px;
+  padding: 7px;
 }
 .list4{
   background-image: url("dist/images/list-4.png");
@@ -743,13 +739,11 @@ hr{
 
   .headerMainSidebar .dropMenu:hover {
     background: #2F2F37;
-    padding: 0;
-    margin: 0;
+
   }
 
   .menu{
     background: #2F2F37;
-    box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.1);
     color: #fff;
   }
   .profileImg{
@@ -757,8 +751,7 @@ hr{
   }
   .dropMenuItems{
     height: 30px;
-    padding: 0;
-    border-radius: 5px;
+    padding: 10px;
   }
   .greenBg{
     background: #4E9616;

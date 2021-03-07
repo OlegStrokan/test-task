@@ -33,7 +33,6 @@ const App = () => {
     let [width, setWidth] = useState([window.innerWidth])
     useEffect(() => {
         const handleResize = _debounce(() => setWidth(window.innerWidth))
-
         window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('resize', handleResize);
