@@ -4,8 +4,9 @@ import {Dropdown, Menu} from "antd";
 import CustomMenu from "./CustomMenu";
 
 
-const Nav = (props) => {
-    return <div className={props.active && props.width < 1150 ? s.nav : s.navActive}>
+const SideBar = (props) => {
+    return <div className={s.nav}>
+    <div className={props.active && props.width < 1150 ? s.nav : s.navActive}>
         <div className={s.company}>
             <div className={s.logo}>
             </div>
@@ -56,10 +57,7 @@ const Nav = (props) => {
             </div>
         </div>
     </div>
-}
-
-const SideBar = (props) => {
-    return <Nav {...props}/>
+    </div>
 }
 
 export default SideBar;

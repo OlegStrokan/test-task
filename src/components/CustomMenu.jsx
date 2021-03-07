@@ -3,9 +3,8 @@ import s from "../App.module.css";
 import {RightOutlined} from "@ant-design/icons";
 
  const CustomMenu = (props) => {
-
-    let [activeItem, setActiveItem] = useState(null)
-    let [activeCheck, setActiveCheck] = useState(null)
+     let [activeItem, setActiveItem] = useState(null)
+     let [activeCheck, setActiveCheck] = useState(null)
 
     return <>
         <div className={s.menuTop} {...props}>
