@@ -13,51 +13,19 @@ import _debounce from 'lodash.debounce'
 let myData = require('./myData.json');
 let newData = myData.myData
 
-/*const CustomMenuItem = (props) => {
+export const CustomMenu = (props) => {
 
-    let [activeItem, setActiveItem] = useState(0)
-
-
-    let onClick = (activeItem) => {
-        return setActiveItem(activeItem)
-    }
-
-    return <>
-        <Menu.Item key="1" className={s.menuTop} {...props}>
-            <a target="_blank" rel="noopener noreferrer" href="#">
-                <span className={s.myFinance}>Мої фінанси <RightOutlined className={s.RightOutlined}/></span>
-            </a>
-            <div>$ 854.1</div>
-        </Menu.Item>
-        <hr/>
-        <Menu.Item key="2" className={s.menuBottom} {...props}>
-            <div className={s.menuDescription}>
-                <div>Основна валюта</div>
-                <div className={s.info}></div>
-            </div>
-            <ul>
-                {props.values.map((value,index) => <div className={activeItem ===  value && s.aboutValueActive}
-               ><div className={s.aboutValue}><input onChange={onClick(index)} className={s.checkbox} type="checkbox"/>
-                    <span className={s.borderValue}><span>{value.badge}</span></span> {value.code} {value.value}</div></div>)}
-            </ul>
-        </Menu.Item>
-    </>
-}*/
-
-
-const CustomMenu = (props) => {
-    debugger
-    let [activeItem, setActiveItem] = useState(0)
-
+    let [activeItem, setActiveItem] = useState(null)
+    let [activeCheck, setActiveCheck] = useState(null)
 
     return <>
         <div className={s.menuTop} {...props}>
             <a target="_blank" rel="noopener noreferrer" href="#">
                 <span className={s.myFinance}>Мої фінанси <RightOutlined className={s.RightOutlined}/></span>
             </a>
-            <div>$ 854.1</div>
+            <div className={s.menuTopFinance}><span className={s.dollar}>$</span> 854.1</div>
         </div>
-        <hr/>
+        <hr className={s.hr}/>
         <div key="2" className={s.menuBottom} {...props}>
             <div className={s.menuDescription}>
                 <div>Основна валюта</div>
@@ -65,8 +33,9 @@ const CustomMenu = (props) => {
             </div>
             <ul>
                 {props.values.map((value,index) => {
-                    return <div className={activeItem === value ? s.aboutValueActive : undefined}
+                    return <div className={activeItem === index ? s.aboutValueActive : undefined}
                                 onClick={() => {
+                                setActiveCheck(index)
                                 setActiveItem(index)}}
                 ><div className={s.aboutValue}><input className={s.checkbox} type="checkbox"/>
                     <span className={s.borderValue}><span>{value.badge}</span></span> {value.code} {value.value}</div></div>})}
@@ -108,15 +77,23 @@ const App = () => {
 
     return <div className={s.wrapper}>
             <div className={s.nav}>
-              <SideBar active={sidebarActive} setSidebarActive={setSidebarActive}  width={width}/>
+              <SideBar values={values} active={sidebarActive} setSidebarActive={setSidebarActive}  width={width}/>
             </div>
                 <div className={s.header}>
                     <div className={s.headerLeft}>
-                    <div className={s.burgerBtn} onClick={() =>{setSidebarActive(!sidebarActive)}}>
-                        <span/>
-                        <span/>
-                        <span/>
-                    </div>
+                        {s.nav &&
+                            <div className={s.burgerBtn} onClick={() => {
+                                setSidebarActive(!sidebarActive)
+                            }}>
+                                <span/>
+                                <span/>
+                                <span/>
+                            </div>}
+                        {s.navActive &&
+                            <div className={s.burgerBtnBack} onClick={() =>{setSidebarActive(!sidebarActive)}}>
+                            <span className={s.burgerClose}><span>Меню</span></span>
+                            </div>
+                        }
                     <div className={s.back}><LeftOutlined/> Назад</div></div>
                     <div className={s.headerMain}>
                         <div className={s.dropMenu}><Dropdown overlay={<Menu>
@@ -141,13 +118,21 @@ const App = () => {
             <div className={s.orderBottom2}>
                 <div className={s.total}>
                     <div className={s.totalPrice}>{totalPrice} ₴</div>
+                        <div>
+                    <button className={s.editPriceButton}
+                            onClick={() => { return inputValue < 1 ? undefined : setInputValue(inputValue - 1)
+                            }}>-</button>
                     <InputNumber className={s.input}
                                  size={'large'} min={1} max={10}
-                                 defaultValue={inputValue}
+                                 value={inputValue}
                                  onChange={setInputValue}/>
+                    <button className={s.editPriceButton}
+                            onClick={() => { return inputValue > 9 ? undefined : setInputValue(inputValue + 1)
+                            }}>+</button>
                     <button className={s.priceButton}>
                         <div className={s.buy}></div>
                     </button>
+                </div>
                 </div>
         </div>
             <div className={s.productsImg}></div>
@@ -261,7 +246,7 @@ const App = () => {
                                 <div className={s.total}>
                                     <InputNumber className={s.input}
                                                  size={'large'} min={1} max={10}
-                                                 defaultValue={inputValue}
+                                                 value={inputValue}
                                                  onChange={setInputValue}/>
                                     <button className={s.priceButton}>
                                         <div className={s.buy}></div>

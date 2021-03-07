@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap');
+
 *{
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+.dollar{
+  color: #005BE4;
 }
 .wrapper{
   display: grid;
@@ -72,6 +78,10 @@ li{
   font-size: 22px;
   margin-left: 10px;
 }
+.menuTopFinance{
+  font-size: 22px;
+  font-weight: bold;
+}
 .nav {
   color: #fff;
   background: #212122;
@@ -85,9 +95,11 @@ li{
   display: flex;
   align-items: center;
   flex-direction: column;
-  transform: translateX(-100%)
+  transform: translateX(-100%);
 }
-
+.headerMainSidebar{
+  display: none;
+}
 .navActive{
   color: #fff;
   background: #212122;
@@ -105,6 +117,9 @@ li{
   transform: translateX(100%);
 }
 
+.burgerBtnBack{
+  display: none;
+}
 .burgerBtn{
   width: 20px;
   height: 20px;
@@ -112,7 +127,6 @@ li{
   position: relative;
   cursor: pointer;
   display: none;
-
 }
 .burgerBtn span:nth-child(1){
   content: '';
@@ -120,7 +134,7 @@ li{
   top: 0px;
   width: 20px;
   height: 1px;
-  background: #000;
+  background: #212122;
 }
 .burgerBtn span:nth-child(2){
   content: '';
@@ -128,7 +142,7 @@ li{
   top: 10px;
   width: 20px;
   height: 1px;
-  background: #000;
+  background: #212122;
 }
 .burgerBtn span:nth-child(3){
   content: '';
@@ -136,7 +150,7 @@ li{
   top: 20px;
   width: 20px;
   height: 1px;
-  background: #000;
+  background: #212122;
 }
 
 .logo{
@@ -154,6 +168,15 @@ li{
 .listsMenu div:nth-child(5),
 .listsMenu div:nth-child(6){
   display: flex;
+  font-size: 18px;
+  font-weight: 500;
+}
+.listsMenu div{
+
+}
+.listsMenu{
+  width: 87%;
+  line-height: 15px;
 }
 
 .listName{
@@ -171,7 +194,7 @@ li{
 }
 .list3{
   background-image: url("dist/images/list-3.png");
-  width: 19px;
+  width: 16px;
   height: 16px;
 }
 .list4{
@@ -213,7 +236,7 @@ li{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(90.74deg, #E3EEFF -37.48%, #F8FBFF 108.93%);
+  background: #F8FBFF;
   grid-area: h;
   padding-right: 15px;
   width: 100%;
@@ -246,11 +269,11 @@ li{
 }
 .aboutValueActive *{
   color: #005BE4;
-  outline: 1px solid #000;
 }
 .aboutValue{
   display: flex;
   align-items: center;
+  font-size: 16px;
 }
 .aboutValue *{
   margin: 7px
@@ -262,7 +285,13 @@ li{
   color: #4E9616;
   margin-right: 10px;
 }
+.headerSurname{
+  width: 55px;
+}
 .headerProfile{
+  display: flex;
+}
+.profile{
   display: flex;
 }
 .profileImg{
@@ -331,6 +360,9 @@ td{
   line-height: 34px;
   margin: 30px 20px 0 0;
 }
+.order hr{
+  margin: 5px 30px;
+}
 .orderTop {
   width: 85%;
   margin: 10px auto;
@@ -349,7 +381,10 @@ td{
   width: 85%;
   margin: 0 auto;
 }
-
+.orderBottom{
+  display: flex;
+  justify-content: space-around;
+}
 .ukraineFlag{
   background-image: url("dist/images/ukraine.png");
   width: 16px;
@@ -362,18 +397,19 @@ td{
   font-size: 28px;
   line-height: 33px;
   color: #005BE4;
+  margin-right: 200px;
 }
 .total{
   display: flex;
+  justify-content: space-between;
 }
 .priceButton{
   font-size: 16px;
   font-weight: bold;
   width: 105px;
-  height: 50px;
+  height: 48px;
   background: #005BE4;
   color: #fff;
-  margin-left: 10px;
   border: none;
   border-radius: 4px;
   display: flex;
@@ -382,13 +418,14 @@ td{
 }
 .totalPrice{
   font-weight: bold;
-  font-size: 24px;
+  font-size: 22px;
+  width: 90px;
   color: #4E9616;
 }
 .orderBottom2 .totalPrice{
   padding: 5px;
 }
-.orderBottom{
+.priceButton{
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -408,13 +445,12 @@ td{
 }
 hr{
   margin: 15px 5px;
-  background: #E6E6E6;
-  border: 1px solid #F4F6F9;
-  height: 0;
+  border: 1px solid #E6E6E6;
 }
 .input{
-  padding: 5px;
-  width: 100px;
+  padding: 3px;
+  position: relative;
+  z-index: 0;
 }
 .aboutTable{
   display: flex;
@@ -437,7 +473,7 @@ hr{
   background-image: url("dist/images/info.png");
   width: 14px;
   height: 14px;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 .simpleText{
   font-size: 15px;
@@ -472,7 +508,6 @@ hr{
 .aboutProduct hr{
   margin-top: 15px;
   border: 1px solid #F4F6F9;
-  height: 0;
 }
 .aboutProduct .title{
   margin: 15px 0 10px 0;
@@ -532,9 +567,12 @@ hr{
     margin: 0 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
   }
+  .order hr{
+    margin: 5px 20px;
+  }
+
   .orderTop, .orderCenter{
     align-items: center;
   }
@@ -545,6 +583,9 @@ hr{
   }
   .menu *{
     font-size: 1em;
+  }
+  .menuTopFinance{
+    font-size: 22px
   }
 }
 
@@ -623,10 +664,9 @@ hr{
     padding: 0;
   }
   .productsImg{
-    width: 300px;
+    width: 310px;
     height: 280px;
     background-size: cover;
-    margin: 0 auto 20px;
   }
   .description{
     width: 100%;
@@ -659,30 +699,150 @@ hr{
   .header{
     height: 47px;
   }
-  .orderBottom2{
+  .orderBottom2 {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background: #F9F9FD;
     width: 100%;
     padding: 15px;
-
   }
   .orderBottom2 .priceButton{
-    margin-left: -20px;
+    width: 50px;
   }
   .orderBottom2 .buy{
     margin-left: 10px;
   }
-
+  .orderBottom2 .total{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .orderBottom2 .total div:nth-child(2){
+    display: flex;
+  }
   .order{
     margin: 0 0 30px 0;
   }
   .navActive{
-    width: 240%;
+    width: 215%;
     height: 100%;
-    transform: translateX(70%);
-    z-index: 2;
+    transform: translateX(73%);
+    z-index: 1;
+  }
+
+  .headerMainSidebar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin: 0 auto;
+    height: 80px;
+  }
+
+  .headerMainSidebar .dropMenu:hover {
+    background: #2F2F37;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menu{
+    background: #2F2F37;
+    box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.1);
+    color: #fff;
+  }
+  .profileImg{
+    margin-top: 14px;
+  }
+  .dropMenuItems{
+    height: 30px;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  .greenBg{
+    background: #4E9616;
+    border-radius: 3px;
+    padding: 2px 5px;
+    color: #fff;
+  }
+  .headerDollar{
+    background-image: url("dist/images/dollar2.png");
+    width: 17px;
+    height: 17px;
+  }
+  .menuTopFinance{
+    font-size: 20px;
+  }
+  .company{
+    padding: 0;
+    justify-content: flex-start;
+    width: 90%;
+    margin-top: -15px;
+}
+  .editPriceButton{
+    padding: 8px;
+    background: #ffffff;
+    border: none;
+    font-size: 20px;
+  }
+
+  .order{
+    height: 370px;
+  }
+  .order .title{
+    font-size: 17px;
+  }
+  .navActive hr{
+    background: #E6E6E6;
+    border: 1px solid #F4F6F9;
+    height: 0;
+  }
+  .orderCenter, .orderTop{
+    display: block;
+  }
+  .hr{
+    border: 1px solid #3C3C46;
+  }
+  .orderBottom2 .totalPrice{
+    width: 100px;
+    color: #005BE4;
+  }
+  .burgerClose{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+  }
+  .burgerClose span{
+    position: absolute;
+    top: 10px;
+    left: -33px;
+  }
+  .burgerClose:before,
+  .burgerClose:after {
+    content: "";
+    position: absolute;
+    top: 21px;
+    left: 10px;
+    width: 26px;
+    height: 4px;
+    background: #F8FBFF;
+  }
+
+  .burgerClose:before {
+    webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .burgerClose:after {
+    webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  .burgerBtnBack{
+    display: block;
+    color: #F8FBFF;
   }
 }
 

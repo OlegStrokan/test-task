@@ -1,5 +1,7 @@
 import React from 'react';
 import s from "../App.module.css";
+import {Dropdown, Menu} from "antd";
+import {CustomMenu} from "../App";
 
 const Nav = (props) => {
     return <div className={props.active && props.width < 1150 ? s.nav : s.navActive}>
@@ -7,6 +9,24 @@ const Nav = (props) => {
             <div className={s.logo}>
             </div>
             <div className={s.name}>Flimcor</div>
+        </div>
+        <div className={s.headerMainSidebar}>
+            <div className={s.profile}>
+                <div className={s.profileImg}></div>
+                <div className={s.headerSurname}>Ольга Пліщук</div>
+            </div>
+            <div className={s.dropMenu}><Dropdown overlay={<Menu>
+                <div className={s.menu}>
+                    <CustomMenu values={props.values}/>
+                </div>
+            </Menu>}>
+                <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                    <div className={s.dropMenuItems}>
+                        <div className={s.headerPrice}><span className={s.greenBg}>1 265 $</span></div>
+                        <div className={s.headerDollar}></div>
+                    </div>
+                </a>
+            </Dropdown></div>
         </div>
         <div className={s.listsMenu}>
             <div>
@@ -37,12 +57,7 @@ const Nav = (props) => {
     </div>
 }
 
-const NavActive = (props) => {
-
-}
-
 const SideBar = (props) => {
-
     return <Nav {...props}/>
 }
 
