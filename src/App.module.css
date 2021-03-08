@@ -43,9 +43,7 @@ li{
 .back{
   margin-left: 20px;
 }
-.dropMenu:hover {
-  outline: 1px solid;
-}
+
 .myFinance {
   font-size: 14px;
   font-weight: bold;
